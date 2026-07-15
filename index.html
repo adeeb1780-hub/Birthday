@@ -864,13 +864,12 @@ function startFireworksShow(){
   document.getElementById('final-stage').addEventListener('click', (e) => {
     if(current !== 4) return;
     spawnBurst(e.clientX, e.clientY, 50);
-  });  
-
+  });
 }
 
 </script>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" autoplay loop>
     <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
