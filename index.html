@@ -849,18 +849,22 @@ function startFireworksShow(){
   });  
 
 // Start background music on the first click anywhere
-  document.addEventListener("click", () => {
+document.addEventListener("click", async () => {
     const music = document.getElementById("bgMusic");
-    music.play();
-  }, { once: true });
 
+    try {
+        await music.play();
+        console.log("Music started");
+    } catch (err) {
+        console.error("Music could not play:", err);
+    }
+}, { once: true });
 }
 </script>
 
 <audio id="bgMusic" autoplay loop>
     <source src="bgm.mp3" type="audio/mpeg">
 </audio>
-
 
 </body>
 </html>
