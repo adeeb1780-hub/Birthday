@@ -449,6 +449,7 @@ async function startMusic() {
 
   try {
     await bgMusic.play();
+bgMusic.volume = 0.35;
   } catch (err) {
     console.error(err);
   }
