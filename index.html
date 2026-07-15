@@ -426,9 +426,6 @@ function updateSky(){
 }
 
 function goTo(n){
-
-  startMusic();
-
   document.getElementById('phase-' + current).classList.remove('active');
   current = n;
   document.getElementById('phase-' + current).classList.add('active');
@@ -502,6 +499,9 @@ const mcqHint = document.getElementById('mcq-hint');
 mcqButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     if(btn.dataset.correct === 'true'){
+
+startMusic();
+
       btn.classList.add('correct');
       mcqButtons.forEach(b => b.disabled = true);
       mcqHint.textContent = 'exactly right ✦';
