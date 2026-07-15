@@ -426,6 +426,9 @@ function updateSky(){
 }
 
 function goTo(n){
+
+  startMusic();
+
   document.getElementById('phase-' + current).classList.remove('active');
   current = n;
   document.getElementById('phase-' + current).classList.add('active');
@@ -435,6 +438,21 @@ function goTo(n){
   if(n === 4){ triggerFinalReveal(); }
 }
 updateSky();
+
+let musicStarted = false;
+
+async function startMusic() {
+  if (musicStarted) return;
+  musicStarted = true;
+
+  const bgMusic = document.getElementById("bgMusic");
+
+  try {
+    await bgMusic.play();
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 /* ---------------- Ambient gold dust ---------------- */
 (function(){
@@ -848,18 +866,6 @@ function startFireworksShow(){
     spawnBurst(e.clientX, e.clientY, 50);
   });  
 
-// Start background music on the first click anywhere
-document.addEventListener("click", async () => {
-    const music = document.getElementById("bgMusic");
-
-    try {
-        await music.play();
-        console.log("Music started");
-    } catch (err) {
-        console.error("Music could not play:", err);
-    }
-}, { once: true });
-}
 </script>
 
 <audio id="bgMusic" autoplay loop>
